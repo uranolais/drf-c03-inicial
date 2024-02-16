@@ -22,7 +22,7 @@ class CursosViewSet(viewsets.ModelViewSet):
 class MatriculaViewSet(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
-    http_method_names = ['get','post',]
+    http_method_names = ['get','post',] #https://docs.djangoproject.com/en/stable/ref/class-based-views/base/#django.views.generic.base.View
   
 # localhost:8000/estudante/1/matriculas
     
