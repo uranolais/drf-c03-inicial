@@ -1,15 +1,10 @@
 from rest_framework import viewsets, generics, filters
 from escola.models import Estudante,Curso,Matricula
 from escola.serializers import EstudanteSerializer,CursoSerializer,MatriculaSerializer,ListaMatriculasEstudanteSerializer, ListaMatriculasCursoSerializer, EstudanteSerializerV2
-from rest_framework.authentication import BasicAuthentication
-from rest_framework.permissions import IsAuthenticated, DjangoModelPermissions
 from django_filters.rest_framework import DjangoFilterBackend
 
 class EstudantesViewSet(viewsets.ModelViewSet):
     queryset = Estudante.objects.all()
-    # serializer_class = EstudanteSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     # filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome']
@@ -23,15 +18,12 @@ class EstudantesViewSet(viewsets.ModelViewSet):
 class CursosViewSet(viewsets.ModelViewSet):
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated, DjangoModelPermissions]
     
 class MatriculaViewSet(viewsets.ModelViewSet):
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated, DjangoModelPermissions]
-
+    http_method_names = ['get','post',]
+  
 # localhost:8000/estudante/1/matriculas
     
 class ListaMatriculaEstudante(generics.ListAPIView):
