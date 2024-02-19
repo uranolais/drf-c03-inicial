@@ -14,9 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
             // Convertendo as propriedades numeradas em um array
             const cursosArray = Object.keys(data).map(key => data[key]);
             
+            // cursosArray.forEach(curso => {
+            //     const itemLista = document.createElement("h2");
+            //     itemLista.textContent = curso.descricao;
+            //     cursosLista.appendChild(itemLista);
+            // });
             cursosArray.forEach(curso => {
                 const itemLista = document.createElement("h2");
-                itemLista.textContent = curso.descricao;
+                itemLista.innerHTML = `<strong>${curso.codigo}</strong>: ${curso.descricao} (Nível ${curso.nivel})`;
                 cursosLista.appendChild(itemLista);
             });
         })
