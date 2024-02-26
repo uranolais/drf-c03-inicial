@@ -26,6 +26,7 @@
 
 ### Rotas da documentação
 * Vai dar um erro no terminal, mas é só por causa de um filtro, não precisa se preocupar e vai continuar rodando de boas
-> http://127.0.0.1:8000/swagger 
+> http://127.0.0.1:8000/swagger
+> 
 > http://127.0.0.1:8000/redoc 
 
