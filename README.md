@@ -1,5 +1,7 @@
 # DRF - CURSO 03 
 
+* A versão do python utilizada nesse curso é a 3.11.7, todas as outras informações de dependências estão no arquivo 'requirements.txt'
+  
 ## Download do projeto
 
 `git clone https://github.com/uranolais/drf-c03-inicial.git`
