@@ -3,15 +3,19 @@ from escola.models import Estudante,Curso,Matricula
 from escola.serializers import EstudanteSerializer,CursoSerializer,MatriculaSerializer,ListaMatriculasEstudanteSerializer, ListaMatriculasCursoSerializer, EstudanteSerializerV2
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.throttling import AnonRateThrottle, UserRateThrottle
+from rest_framework.permissions import IsAuthenticated
+
 
 class EstudantesViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
     queryset = Estudante.objects.all()
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     # filter_backends = [filters.OrderingFilter, filters.SearchFilter]
     ordering_fields = ['nome']
     search_fields = ['nome', 'cpf']
+
     def get_serializer_class(self):
-        print("Valor de request.version:", self.request.version)
+        # print("Valor de request.version:", self.request.version)
         if self.request.version == 'v2': #rota: http://127.0.0.1:8000/estudantes/?version=v2
             return EstudanteSerializerV2
         return EstudanteSerializer
